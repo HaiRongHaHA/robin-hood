@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/HaiRongHaHA/robin-hood/compare/macaroon-ui@0.1.0...macaroon-ui@0.2.0) (2021-11-27)
+
+
+### Features
+
+* init ([a7c6bf8](https://github.com/HaiRongHaHA/robin-hood/commit/a7c6bf8e0775361b8322974152abbe804548383b))
+
+
+
+
+
 # 0.1.0 (2021-11-27)
 
 
