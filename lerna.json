@@ -1,0 +1,23 @@
+{
+  "useWorkspaces": true,
+  "packages": ["packages/*"],
+  "version": "independent",
+  "npmClient": "yarn",
+  "command": {
+    "bootstrap": {
+      "hoist": true,
+      "ignore": "npm-*",
+      "npmClientArgs": ["--no-package-lock"]
+    },
+    "version": {
+      "conventionalCommits": true
+    },
+    "publish": {
+      "allowBranch": "main",
+      "ignoreChanges": ["*.md"],
+      "verifyAccess": false,
+      "registry": "https://registry.npmjs.org/",
+      "message": "chore(release): publish"
+    }
+  }
+}
