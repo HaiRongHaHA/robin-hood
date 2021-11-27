@@ -1,0 +1,95 @@
+0 silly argv {
+0 silly argv   _: [ 'publish' ],
+0 silly argv   composed: 'publish',
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': 'C:\\Users\\Melvin\\AppData\\Roaming\\npm\\node_modules\\lerna\\cli.js',
+0 silly argv   bump: 'from-package'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath E:\Pro\ToolsPro\robin-hood
+3 info versioning independent
+4 verbose session 050b34b28b134a6b
+5 verbose user-agent lerna/4.0.0/node@v14.17.5+x64 (win32)
+6 verbose git-describe undefined => "6407811"
+7 silly git-describe parsed => {"refCount":"2","sha":"6407811","isDirty":false}
+8 silly getUnpublishedPackages
+9 warn Unable to determine published version, assuming "charon-cli" unpublished.
+10 warn Unable to determine published version, assuming "vscode-transform-name" unpublished.
+11 warn Unable to determine published version, assuming "macaroon-ui" unpublished.
+12 warn Unable to determine published version, assuming "macaroon-mobile" unpublished.
+13 info publish Publishing packages to npm...
+14 notice Skipping all user and access validation due to third-party registry
+15 notice Make sure you're authenticated properly ¯\_(ツ)_/¯
+16 warn ENOLICENSE Packages charon-cli, macaroon-mobile, macaroon-ui, and vscode-transform-name are missing a license.
+16 warn ENOLICENSE One way to fix this is to add a LICENSE.md file to the root of this repository.
+16 warn ENOLICENSE See https://choosealicense.com for additional guidance.
+17 silly getCurrentSHA
+18 verbose getCurrentSHA 6407811f81f70aa747c6211f11e74f69cd261eac
+19 silly lifecycle No script for "prepublish" in "root", continuing
+20 silly lifecycle No script for "prepare" in "root", continuing
+21 silly lifecycle No script for "prepublishOnly" in "root", continuing
+22 silly lifecycle No script for "prepack" in "root", continuing
+23 verbose pack-directory packages\charon-cli
+24 verbose pack-directory packages\macaroon-mobile
+25 verbose pack-directory packages\macaroon-ui
+26 verbose pack-directory packages\vscode-transform-name
+27 silly lifecycle No script for "prepublish" in "charon-cli", continuing
+28 silly lifecycle No script for "prepublish" in "macaroon-mobile", continuing
+29 silly lifecycle No script for "prepublish" in "macaroon-ui", continuing
+30 silly lifecycle No script for "prepublish" in "vscode-transform-name", continuing
+31 silly lifecycle No script for "prepare" in "charon-cli", continuing
+32 silly lifecycle No script for "prepare" in "macaroon-mobile", continuing
+33 silly lifecycle No script for "prepare" in "macaroon-ui", continuing
+34 silly lifecycle No script for "prepare" in "vscode-transform-name", continuing
+35 silly lifecycle No script for "prepublishOnly" in "charon-cli", continuing
+36 silly lifecycle No script for "prepublishOnly" in "macaroon-mobile", continuing
+37 silly lifecycle No script for "prepublishOnly" in "macaroon-ui", continuing
+38 silly lifecycle No script for "prepublishOnly" in "vscode-transform-name", continuing
+39 silly lifecycle No script for "prepack" in "macaroon-mobile", continuing
+40 silly lifecycle No script for "prepack" in "charon-cli", continuing
+41 silly lifecycle No script for "prepack" in "macaroon-ui", continuing
+42 silly lifecycle No script for "prepack" in "vscode-transform-name", continuing
+43 silly lifecycle No script for "postpack" in "macaroon-mobile", continuing
+44 verbose packed packages\macaroon-mobile
+45 silly lifecycle No script for "postpack" in "charon-cli", continuing
+46 verbose packed packages\charon-cli
+47 silly lifecycle No script for "postpack" in "macaroon-ui", continuing
+48 verbose packed packages\macaroon-ui
+49 silly lifecycle No script for "postpack" in "vscode-transform-name", continuing
+50 verbose packed packages\vscode-transform-name
+51 silly lifecycle No script for "postpack" in "root", continuing
+52 verbose publish charon-cli
+53 verbose publish macaroon-mobile
+54 verbose publish macaroon-ui
+55 verbose publish vscode-transform-name
+56 silly FetchError: request to http://registry-cnpm.weimiaocaishang.com/charon-cli failed, reason: connect ETIMEDOUT 172.17.223.168:80
+56 silly     at ClientRequest.<anonymous> (E:\Pro\ToolsPro\robin-hood\node_modules\minipass-fetch\lib\index.js:110:14)
+56 silly     at ClientRequest.emit (events.js:400:28)
+56 silly     at Socket.socketErrorListener (_http_client.js:475:9)
+56 silly     at Socket.emit (events.js:412:35)
+56 silly     at emitErrorNT (internal/streams/destroy.js:106:8)
+56 silly     at emitErrorCloseNT (internal/streams/destroy.js:74:3)
+56 silly     at processTicksAndRejections (internal/process/task_queues.js:82:21)
+56 silly  FetchError: request to http://registry-cnpm.weimiaocaishang.com/charon-cli failed, reason: connect ETIMEDOUT 172.17.223.168:80
+56 silly     at ClientRequest.<anonymous> (E:\Pro\ToolsPro\robin-hood\node_modules\minipass-fetch\lib\index.js:110:14)
+56 silly     at ClientRequest.emit (events.js:400:28)
+56 silly     at Socket.socketErrorListener (_http_client.js:475:9)
+56 silly     at Socket.emit (events.js:412:35)
+56 silly     at emitErrorNT (internal/streams/destroy.js:106:8)
+56 silly     at emitErrorCloseNT (internal/streams/destroy.js:74:3)
+56 silly     at processTicksAndRejections (internal/process/task_queues.js:82:21) {
+56 silly   code: 'ETIMEDOUT',
+56 silly   errno: 'ETIMEDOUT',
+56 silly   syscall: 'connect',
+56 silly   address: '172.17.223.168',
+56 silly   port: 80,
+56 silly   type: 'system'
+56 silly }
+57 error ETIMEDOUT request to http://registry-cnpm.weimiaocaishang.com/charon-cli failed, reason: connect ETIMEDOUT 172.17.223.168:80
+58 error FetchError: request to http://registry-cnpm.weimiaocaishang.com/charon-cli failed, reason: connect ETIMEDOUT 172.17.223.168:80
+58 error     at ClientRequest.<anonymous> (E:\Pro\ToolsPro\robin-hood\node_modules\minipass-fetch\lib\index.js:110:14)
+58 error     at ClientRequest.emit (events.js:400:28)
+58 error     at Socket.socketErrorListener (_http_client.js:475:9)
+58 error     at Socket.emit (events.js:412:35)
+58 error     at emitErrorNT (internal/streams/destroy.js:106:8)
+58 error     at emitErrorCloseNT (internal/streams/destroy.js:74:3)
