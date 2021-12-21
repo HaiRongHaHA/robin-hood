@@ -1,11 +1,11 @@
-# `macaroon-ui`
+# `gesture-ts`
 
 > TODO: description
 
 ## Usage
 
 ```
-const macaroonUi = require('macaroon-ui');
+const gestureTs = require('gesture-ts');
 
 // TODO: DEMONSTRATE API
 ```
