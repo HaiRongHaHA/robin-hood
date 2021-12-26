@@ -2,10 +2,30 @@
 
 > TODO: description
 
-## Usage
+## 滑动
+slide
 
-```
-const gestureTs = require('gesture-ts');
+上下左右滑动
 
-// TODO: DEMONSTRATE API
-```
++ slideUp
+
++ slideDown
+
++ slideLeft
+
++ slideRight
+
+## 长按
+longPress
+
+## 拖拽
+dragger
+
+## 捏合
+pinch
+
+## 旋转
+rotate
+
+## vue3指令
+

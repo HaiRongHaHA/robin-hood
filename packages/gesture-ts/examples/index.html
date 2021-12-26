@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>gesture-ts examples</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      padding: 20px 40px;
+      user-select: none;
+    }
+    h1 {
+      margin: 20px 0;
+    }
+    .block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 300px;
+      height: 200px;
+      font-size: 30px;
+      color: #fff;
+      text-align: center;
+    }
+    #slide {
+      background-color: #07e8fe;
+    }
+    #longPress{
+      background-color: #07fea2;
+    }
+  </style>
+  <body>
+    <h1>滑动手势</h1>
+    <div id="slide" class="block">滑动</div>
+    <h1>长按手势</h1>
+    <div id="longPress" class="block">长按</div>
+  </body>
+  <script src="index.js"></script>
+</html>
