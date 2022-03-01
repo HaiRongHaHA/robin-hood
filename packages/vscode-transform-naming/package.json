@@ -1,26 +1,36 @@
 {
   "name": "vscode-transform-naming",
-	"displayName": "vscode-transform-naming",
-	"description": "常量驼峰命名互转",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.63.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-        "onCommand:vscode-transform-naming.helloWorld"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "vscode-transform-naming.helloWorld",
-				"title": "Hello World"
-			}
-		]
-	},
+  "displayName": "vscode-transform-naming",
+  "description": "常量驼峰命名互转",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.63.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:vscode-transform-naming.toHump",
+    "onCommand:vscode-transform-naming.toConstant",
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-transform-naming.toTransform",
+        "title": "Transform to hump/constant"
+      }
+    ],
+    "keybindings":[
+      {
+        "command": "vscode-transform-naming.toTransform",
+        "key": "alt+t",
+        "mac": "cmd+t",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HaiRongHaHA/robin-hood.git"
@@ -28,27 +38,27 @@
   "bugs": {
     "url": "https://github.com/HaiRongHaHA/robin-hood/issues"
   },
-	"scripts": {
-		"vscode:prepublish": "yarn run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "yarn run compile && yarn run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.63.0",
-		"@types/glob": "^7.1.4",
-		"@types/mocha": "^9.0.0",
-		"@types/node": "14.x",
-		"@typescript-eslint/eslint-plugin": "^5.1.0",
-		"@typescript-eslint/parser": "^5.1.0",
-		"eslint": "^8.1.0",
-		"glob": "^7.1.7",
-		"mocha": "^9.1.3",
-		"typescript": "^4.4.4",
-		"@vscode/test-electron": "^1.6.2"
-	},
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.63.0",
+    "@types/glob": "^7.1.4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "14.x",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "^8.1.0",
+    "glob": "^7.1.7",
+    "mocha": "^9.1.3",
+    "typescript": "^4.4.4",
+    "@vscode/test-electron": "^1.6.2"
+  },
   "homepage": "https://github.com/HaiRongHaHA/robin-hood#readme",
   "gitHead": "5601efb8d6659fe01f967dd945e3089e944fd249"
 }

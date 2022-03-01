@@ -1,27 +1,48 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-const vscode = require("vscode");
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-function activate(context) {
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "vscode-transform-naming" is now active!');
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('vscode-transform-naming.helloWorld', () => {
-        // The code you place here will be executed every time your command is executed
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World from vscode-transform-naming!');
+const vscode_1 = require("vscode");
+const utils_1 = require("./utils");
+async function activate(context) {
+    const { onDidChangeActiveTextEditor, onDidChangeTextEditorSelection } = vscode_1.window;
+    let text = "";
+    // 获取选中的文本
+    const selection = onDidChangeTextEditorSelection(({ kind, textEditor, selections }) => {
+        const value = textEditor.document.getText(selections[0]);
+        text = value;
+        vscode_1.window.showInformationMessage(value);
     });
-    context.subscriptions.push(disposable);
+    // 获取当前打开的编辑器对象
+    const edit = onDidChangeActiveTextEditor((textEditor) => {
+        if (textEditor) {
+            text = "";
+        }
+    });
+    vscode_1.commands.registerCommand("vscode-transform-naming.toTransform", () => {
+        let res = "";
+        const isEn = /^[a-zA-Z_]+$/;
+        vscode_1.window.showInformationMessage(text);
+        if (!isEn.test(text)) {
+            vscode_1.window.showInformationMessage("不是英文");
+            return;
+        }
+        if ((0, utils_1.isDash)(text)) {
+            vscode_1.window.showInformationMessage("转驼峰了");
+            res = (0, utils_1.camelize)(text);
+        }
+        if ((0, utils_1.isHump)(text)) {
+            vscode_1.window.showInformationMessage("转下划线了");
+            res = (0, utils_1.dasherize)(text);
+        }
+        vscode_1.window.showInformationMessage(res);
+    });
+    context.subscriptions.push(selection);
+    context.subscriptions.push(edit);
+    // context.subscriptions.push(disposeHover);
 }
 exports.activate = activate;
-// this method is called when your extension is deactivated
-function deactivate() { }
+function deactivate() {
+    console.log("deactivate");
+}
 exports.deactivate = deactivate;
 //# sourceMappingURL=extension.js.map
