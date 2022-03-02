@@ -1,13 +1,15 @@
 import vscode, { window, commands } from "vscode";
 import { isDash, isHump, camelize, dasherize } from "./utils";
 
-
-
 export async function activate(context: vscode.ExtensionContext) {
-  const { onDidChangeActiveTextEditor, onDidChangeTextEditorSelection } =
-    window;
+  const { 
+    activeTextEditor, 
+    onDidChangeActiveTextEditor, 
+    onDidChangeTextEditorSelection 
+  } = window;
 
   let text = "";
+  let active = activeTextEditor;
 
   // 获取选中的文本
   const selection = onDidChangeTextEditorSelection(
@@ -22,33 +24,43 @@ export async function activate(context: vscode.ExtensionContext) {
   const edit = onDidChangeActiveTextEditor((textEditor) => {
     if (textEditor) {
       text = "";
+      active = textEditor;
     }
   });
 
   commands.registerCommand("vscode-transform-naming.toTransform", () => {
     let res = "";
+
     const isEn = /^[a-zA-Z_]+$/;
-    window.showInformationMessage(text);
     if (!isEn.test(text)) {
-      window.showInformationMessage("不是英文");
       return;
     }
     if (isDash(text)) {
-      window.showInformationMessage("转驼峰了");
       res = camelize(text);
     }
 
     if (isHump(text)) {
-      window.showInformationMessage("转下划线了");
       res = dasherize(text);
     }
 
-    window.showInformationMessage(res);
+    if(!res) {
+      return;
+    };
+
+    if(!active) {
+      return;
+    };
+
+    // 替换选中文本
+    let selectedItem = active.selection;
+    active.edit(editBuilder => {
+      editBuilder.replace(selectedItem, res);
+    });
+
   });
 
   context.subscriptions.push(selection);
   context.subscriptions.push(edit);
-  // context.subscriptions.push(disposeHover);
 }
 
 export function deactivate() {
