@@ -10,8 +10,6 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vscode-transform-naming.toHump",
-    "onCommand:vscode-transform-naming.toConstant",
     "onStartupFinished"
   ],
   "main": "./out/extension.js",
@@ -19,7 +17,7 @@
     "commands": [
       {
         "command": "vscode-transform-naming.toTransform",
-        "title": "Transform to hump/constant"
+        "title": "驼峰/常量互转"
       }
     ],
     "keybindings":[
@@ -29,7 +27,16 @@
         "mac": "cmd+t",
         "when": "editorTextFocus"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "vscode-transform-naming.toTransform",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "repository": {
     "type": "git",

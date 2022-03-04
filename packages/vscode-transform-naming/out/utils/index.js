@@ -42,4 +42,4 @@ function isDash(str) {
     return /^[A-Z]+(_{1}[A-Z]+)+$/.test(str);
 }
 exports.isDash = isDash;
-//# sourceMappingURL=utils.js.map
+//# sourceMappingURL=index.js.map

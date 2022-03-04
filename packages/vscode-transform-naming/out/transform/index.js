@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isDash = exports.isHump = exports.dasherize = exports.camelize = void 0;
 /**
  * @description 大写下划线转驼峰
  * @param {*} str
@@ -11,7 +10,6 @@ function camelize(str) {
         .replace(/([A-Z])/g, (match, matchWord) => matchWord.toLowerCase())
         .replace(/[-_\s]+(.)?/g, (match, matchWord) => matchWord.toUpperCase());
 }
-exports.camelize = camelize;
 /**
  * @description 驼峰转大写下划线
  * @param {*} str
@@ -23,7 +21,6 @@ function dasherize(str) {
         .replace(/[-_\s]+/g, "_")
         .toUpperCase();
 }
-exports.dasherize = dasherize;
 /**
  * @description 是否是驼峰
  * @param {*} str
@@ -32,7 +29,6 @@ exports.dasherize = dasherize;
 function isHump(str) {
     return /^[a-z]+([A-Z]{1}[a-z]+)+$/.test(str);
 }
-exports.isHump = isHump;
 /**
  * @description 是否是大写下划线
  * @param {*} str
@@ -41,5 +37,35 @@ exports.isHump = isHump;
 function isDash(str) {
     return /^[A-Z]+(_{1}[A-Z]+)+$/.test(str);
 }
-exports.isDash = isDash;
-//# sourceMappingURL=utils.js.map
+/**
+ * @description 转换
+ * @param selectText
+ * @param activeEditor
+ * @returns
+ */
+function default_1(selectText, activeEditor) {
+    let transText = "";
+    const isEn = /^[a-zA-Z_]+$/;
+    if (!isEn.test(selectText)) {
+        return;
+    }
+    if (isDash(selectText)) {
+        transText = camelize(selectText);
+    }
+    if (isHump(selectText)) {
+        transText = dasherize(selectText);
+    }
+    if (!transText) {
+        return;
+    }
+    if (!activeEditor) {
+        return;
+    }
+    // 替换选中文本
+    let selectedItem = activeEditor.selection;
+    activeEditor.edit((editBuilder) => {
+        editBuilder.replace(selectedItem, transText);
+    });
+}
+exports.default = default_1;
+//# sourceMappingURL=index.js.map
