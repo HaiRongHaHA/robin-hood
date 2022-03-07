@@ -1,4 +1,4 @@
-import vscode from "vscode";
+import vscode from 'vscode'
 
 /**
  * @description 大写下划线转驼峰
@@ -8,7 +8,9 @@ import vscode from "vscode";
 function camelize(str: string) {
   return str
     .replace(/([A-Z])/g, (match, matchWord) => matchWord.toLowerCase())
-    .replace(/[-_\s]+(.)?/g, (match, matchWord) => matchWord.toUpperCase());
+    .replace(/[-_\s]+(.)?/g, (match, matchWord) =>
+      matchWord.toUpperCase()
+    )
 }
 
 /**
@@ -18,9 +20,9 @@ function camelize(str: string) {
  */
 function dasherize(str: string) {
   return str
-    .replace(/([A-Z])/g, "-$1")
-    .replace(/[-_\s]+/g, "_")
-    .toUpperCase();
+    .replace(/([A-Z])/g, '-$1')
+    .replace(/[-_\s]+/g, '_')
+    .toUpperCase()
 }
 
 /**
@@ -29,7 +31,7 @@ function dasherize(str: string) {
  * @returns
  */
 function isHump(str: string) {
-  return /^[a-z]+([A-Z]{1}[a-z]+)+$/.test(str);
+  return /^[a-z]+([A-Z]{1}[a-z]+)+$/.test(str)
 }
 
 /**
@@ -38,7 +40,7 @@ function isHump(str: string) {
  * @returns
  */
 function isDash(str: string) {
-  return /^[A-Z]+(_{1}[A-Z]+)+$/.test(str);
+  return /^[A-Z]+(_{1}[A-Z]+)+$/.test(str)
 }
 
 /**
@@ -47,32 +49,35 @@ function isDash(str: string) {
  * @param activeEditor
  * @returns
  */
-export default function (selectText: string, activeEditor: vscode.TextEditor) {
-  let transText = "";
+export default function (
+  selectText: string,
+  activeEditor: vscode.TextEditor
+) {
+  let transText = ''
 
-  const isEn = /^[a-zA-Z_]+$/;
+  const isEn = /^[a-zA-Z_]+$/
   if (!isEn.test(selectText)) {
-    return;
+    return
   }
   if (isDash(selectText)) {
-    transText = camelize(selectText);
+    transText = camelize(selectText)
   }
 
   if (isHump(selectText)) {
-    transText = dasherize(selectText);
+    transText = dasherize(selectText)
   }
 
   if (!transText) {
-    return;
+    return
   }
 
   if (!activeEditor) {
-    return;
+    return
   }
 
   // 替换选中文本
-  let selectedItem = activeEditor.selection;
-  activeEditor.edit((editBuilder) => {
-    editBuilder.replace(selectedItem, transText);
-  });
+  let selectedItem = activeEditor.selection
+  activeEditor.edit(editBuilder => {
+    editBuilder.replace(selectedItem, transText)
+  })
 }

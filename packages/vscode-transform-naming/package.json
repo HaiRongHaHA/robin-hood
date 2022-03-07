@@ -20,7 +20,7 @@
         "title": "驼峰/常量互转"
       }
     ],
-    "keybindings":[
+    "keybindings": [
       {
         "command": "vscode-transform-naming.toTransform",
         "key": "alt+t",
