@@ -4,8 +4,8 @@ exports.deactivate = exports.activate = void 0;
 const vscode_1 = require("vscode");
 const transform_1 = require("./transform");
 async function activate(context) {
-    const { activeTextEditor, onDidChangeActiveTextEditor, onDidChangeTextEditorSelection, } = vscode_1.window;
-    let selectText = "";
+    const { activeTextEditor, onDidChangeActiveTextEditor, onDidChangeTextEditorSelection } = vscode_1.window;
+    let selectText = '';
     let activeEditor = activeTextEditor;
     // 获取选中的文本
     const selection = onDidChangeTextEditorSelection(({ kind, textEditor, selections }) => {
@@ -13,14 +13,14 @@ async function activate(context) {
         selectText = value;
     });
     // 获取当前打开的编辑器对象
-    const edit = onDidChangeActiveTextEditor((textEditor) => {
+    const edit = onDidChangeActiveTextEditor(textEditor => {
         if (textEditor) {
-            selectText = "";
+            selectText = '';
             activeEditor = textEditor;
         }
     });
     // 注册转换命令
-    vscode_1.commands.registerCommand("vscode-transform-naming.toTransform", () => {
+    vscode_1.commands.registerCommand('vscode-transform-naming.toTransform', args => {
         if (!activeEditor) {
             return;
         }

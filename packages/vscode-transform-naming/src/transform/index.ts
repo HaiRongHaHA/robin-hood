@@ -1,70 +1,66 @@
 import vscode from 'vscode'
+import {
+  isValid,
+  isSmallHump,
+  isUpperCaseDash,
+  isLowerCase,
+  isUpperCase,
+  isLowerCaseDash,
+  isLargeHump,
+  isLowerCaseHyphen
+} from './reg'
+import {
+  upperCaseDashToSmallHump,
+  smallHumpToUpperCaseDash,
+  lowerCaseDashToSmallHump,
+  largeHumpToLowerCaseHyphen,
+  lowerCaseHyphenToLargeHump
+} from './trans'
 
-/**
- * @description 大写下划线转驼峰
- * @param {*} str
- * @returns
- */
-function camelize(str: string) {
-  return str
-    .replace(/([A-Z])/g, (match, matchWord) => matchWord.toLowerCase())
-    .replace(/[-_\s]+(.)?/g, (match, matchWord) =>
-      matchWord.toUpperCase()
-    )
-}
-
-/**
- * @description 驼峰转大写下划线
- * @param {*} str
- * @returns
- */
-function dasherize(str: string) {
-  return str
-    .replace(/([A-Z])/g, '-$1')
-    .replace(/[-_\s]+/g, '_')
-    .toUpperCase()
-}
-
-/**
- * @description 是否是驼峰
- * @param {*} str
- * @returns
- */
-function isHump(str: string) {
-  return /^[a-z]+([A-Z]{1}[a-z]+)+$/.test(str)
-}
-
-/**
- * @description 是否是大写下划线
- * @param {*} str
- * @returns
- */
-function isDash(str: string) {
-  return /^[A-Z]+(_{1}[A-Z]+)+$/.test(str)
-}
-
-/**
- * @description 转换
- * @param selectText
- * @param activeEditor
- * @returns
- */
 export default function (
   selectText: string,
   activeEditor: vscode.TextEditor
 ) {
   let transText = ''
 
-  const isEn = /^[a-zA-Z_]+$/
-  if (!isEn.test(selectText)) {
+  // 不是英文不做处理
+  if (!isValid.test(selectText)) {
     return
   }
-  if (isDash(selectText)) {
-    transText = camelize(selectText)
+
+  // 大写下划线——>小驼峰
+  if (isUpperCaseDash.test(selectText)) {
+    transText = upperCaseDashToSmallHump(selectText)
   }
 
-  if (isHump(selectText)) {
-    transText = dasherize(selectText)
+  // 小驼峰——>大写下划线
+  if (isSmallHump.test(selectText)) {
+    transText = smallHumpToUpperCaseDash(selectText)
+  }
+
+  // 全小写——>全大写
+  if (isLowerCase.test(selectText)) {
+    transText = selectText.toUpperCase()
+  }
+
+  // 全大写——>全小写
+  if (isUpperCase.test(selectText)) {
+    transText = selectText.toLowerCase()
+  }
+
+  // 全小写_分割——>小驼峰
+  if (isLowerCaseDash.test(selectText)) {
+    transText = lowerCaseDashToSmallHump(selectText)
+  }
+
+  // 大驼峰——>全小写-分割
+  if (isLargeHump.test(selectText)) {
+    transText = largeHumpToLowerCaseHyphen(selectText)
+  }
+
+  // 全小写-分割——>大驼峰
+  if (isLowerCaseHyphen.test(selectText)) {
+    transText = lowerCaseHyphenToLargeHump(selectText)
   }
 
   if (!transText) {

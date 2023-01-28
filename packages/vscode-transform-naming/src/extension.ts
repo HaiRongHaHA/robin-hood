@@ -30,7 +30,7 @@ export async function activate(context: vscode.ExtensionContext) {
   // 注册转换命令
   commands.registerCommand(
     'vscode-transform-naming.toTransform',
-    () => {
+    args => {
       if (!activeEditor) {
         return
       }
